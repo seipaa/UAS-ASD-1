@@ -1,0 +1,17 @@
+import java.util.*;
+
+class TreeNode {
+    String nama; 
+    TreeNode orangTua;
+    List<TreeNode> anak;
+    public TreeNode(String nama) {
+        this.nama = nama;
+        this.orangTua = this;
+        this.anak = new ArrayList<>();
+    }
+    public TreeNode cariAkar() {
+        if (this.orangTua != this) {
+            this.orangTua = this.orangTua.cariAkar(); // 
+        }
+        return this.orangTua;
+    }
