@@ -1,17 +1,28 @@
 import java.util.*;
 
 class TreeNode {
-    String nama; 
+    String nama;
     TreeNode orangTua;
     List<TreeNode> anak;
+
     public TreeNode(String nama) {
         this.nama = nama;
         this.orangTua = this;
         this.anak = new ArrayList<>();
     }
     public TreeNode cariAkar() {
-        if (this.orangTua != this) {
-            this.orangTua = this.orangTua.cariAkar(); // 
+        TreeNode current = this;
+        while (current.orangTua != current) {
+            current = current.orangTua;
         }
-        return this.orangTua;
+        return current;
     }
+    public void gabung(TreeNode lainnya) {
+        TreeNode akar1 = this.cariAkar();
+        TreeNode akar2 = lainnya.cariAkar();
+        if (akar1 != akar2) {
+            akar2.orangTua = akar1;
+            akar1.anak.add(akar2);
+        }
+    }
+}
