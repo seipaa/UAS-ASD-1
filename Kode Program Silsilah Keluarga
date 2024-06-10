@@ -26,3 +26,28 @@ class TreeNode {
         }
     }
 }
+class Relationship {
+    String nama1;
+    String nama2;
+    Relationship berikutnya;
+
+    public Relationship(String nama1, String nama2) {
+        this.nama1 = nama1;
+        this.nama2 = nama2;
+        this.berikutnya = null;
+    }
+}
+public class FamilyTree {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int M, N;
+
+        while (true) {
+            M = sc.nextInt();
+            if (M > 1 && M <= 300) break;
+        }
+
+        while (true) {
+            N = sc.nextInt();
+            if (N > 1 && N <= 200) break;
+        }
