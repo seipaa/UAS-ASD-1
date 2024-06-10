@@ -74,3 +74,19 @@ public class FamilyTree {
                 ekor = hubunganBaru;
             }
         }
+Relationship saatIni = kepala;
+        while (saatIni != null) {
+            TreeNode node1 = petaKeluarga.get(saatIni.nama1);
+            TreeNode node2 = petaKeluarga.get(saatIni.nama2);
+            node1.gabung(node2);
+            saatIni = saatIni.berikutnya;
+        }
+
+        Set<TreeNode> keluargaUnik = new HashSet<>();
+        for (TreeNode node : petaKeluarga.values()) {
+            keluargaUnik.add(node.cariAkar());
+        }
+
+        System.out.println(keluargaUnik.size());
+    }
+}
