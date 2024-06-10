@@ -51,3 +51,26 @@ public class FamilyTree {
             N = sc.nextInt();
             if (N > 1 && N <= 200) break;
         }
+ Map<String, TreeNode> petaKeluarga = new HashMap<>();
+        Relationship kepala = null, ekor = null;
+
+        for (int i = 0; i < N; i++) {
+            String[] hubungan = sc.nextLine().split(" ");
+            String nama1 = hubungan[0];
+            String nama2 = hubungan[2];
+
+            if (!petaKeluarga.containsKey(nama1)) {
+                petaKeluarga.put(nama1, new TreeNode(nama1));
+            }
+            if (!petaKeluarga.containsKey(nama2)) {
+                petaKeluarga.put(nama2, new TreeNode(nama2));
+            }
+
+            Relationship hubunganBaru = new Relationship(nama1, nama2);
+            if (kepala == null) {
+                kepala = ekor = hubunganBaru;
+            } else {
+                ekor.berikutnya = hubunganBaru;
+                ekor = hubunganBaru;
+            }
+        }
